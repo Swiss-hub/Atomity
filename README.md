@@ -8,7 +8,7 @@ A scroll-triggered, animated cloud cost drill-down dashboard built for the Atomi
 
 ## Feature Choice
 
-I chose **Option A (0:30–0:40)** — the cloud cost breakdown dashboard.
+I chose **Option A (0:30–0:40)** - the cloud cost breakdown dashboard.
 
 The video showed a bar chart with a data table and a drill-down interaction across three levels: Cluster → Namespace → Pod. Rather than reproducing it pixel-for-pixel, I used it as a conceptual starting point and pushed the UI/UX further with richer animations, a token-driven dark mode, skeleton loading states, and a more polished visual hierarchy.
 
@@ -21,11 +21,11 @@ All animations are scroll-triggered using a custom `useInView` hook built on the
 Key animation decisions:
 
 - **Bars** grow upward from the baseline using `scaleY` with `transformOrigin: "bottom"` and a spring-like cubic bezier `[0.34, 1.56, 0.64, 1]` for a subtle natural overshoot
-- **Stagger** — each bar and table row animates in with an `index * 0.08s` delay so elements cascade in rather than all appearing at once
-- **Number count-up** — table cells count from 0 to their final value using `requestAnimationFrame` and an `easeOutQuart` curve. Fast at the start, gently landing on the final number
-- **Drill-down transitions** — `AnimatePresence mode="wait"` ensures old content fades out fully before new content animates in, preventing visual overlap
-- **Breadcrumb** — each new step slides in from the left using `AnimatePresence mode="popLayout"` which keeps surrounding elements stable during the transition
-- All animations respect `prefers-reduced-motion` — both via a global CSS media query and inside the `useCountUp` hook which skips to the final value immediately if reduced motion is set
+- **Stagger** - each bar and table row animates in with an `index * 0.08s` delay so elements cascade in rather than all appearing at once
+- **Number count-up** - table cells count from 0 to their final value using `requestAnimationFrame` and an `easeOutQuart` curve. Fast at the start, gently landing on the final number
+- **Drill-down transitions** - `AnimatePresence mode="wait"` ensures old content fades out fully before new content animates in, preventing visual overlap
+- **Breadcrumb** - each new step slides in from the left using `AnimatePresence mode="popLayout"` which keeps surrounding elements stable during the transition
+- All animations respect `prefers-reduced-motion` - both via a global CSS media query and inside the `useCountUp` hook which skips to the final value immediately if reduced motion is set
 
 ---
 
@@ -77,7 +77,7 @@ Loading state shows an animated skeleton (pulsing placeholder bars and rows). Er
 | ![React](https://img.shields.io/badge/-React-61DAFB?style=flat-square&logo=react&logoColor=black)          | 19      | UI framework                                                   |
 | ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)     | 5       | Type safety across all components and hooks                    |
 | ![Framer Motion](https://img.shields.io/badge/Framer-black?style=for-the-badge&logo=framer&logoColor=blue)  | 11      | Animation library — clean API, great `AnimatePresence` support |
-| 	![TanStack Query](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) | 5       | Best-in-class async state management and caching               |
+| 	![TanStack Query] | 5       | Best-in-class async state management and caching               |
 | clsx           | 2       | Conditional class merging utility                              |
 
 No pre-built UI component libraries were used. Every component — cards, badges, bars, breadcrumbs, table rows - was built from scratch.
