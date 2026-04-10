@@ -128,3 +128,10 @@ export const Bar = ({
     </div>
   );
 };
+
+// NOTE:
+// scaleY from bottom - bars grow upward from the baseline, exactly like a real chart. transformOrigin: "bottom" is what makes this work
+// Spring easing [0.34, 1.56, 0.64, 1] - a subtle overshoot that makes bars feel alive without being cartoonish
+// Stagger via index * 0.08 - each bar animates in 80ms after the previous one
+// getBarColor - darker green for higher spend, lighter for lower. Visual hierarchy without any extra labels
+// aria-label on button - screen readers announce the node name and cost when focused

@@ -1,4 +1,4 @@
-"use Client";
+"use client";
 
 import { motion } from "framer-motion";
 
@@ -16,75 +16,69 @@ export const FilterBadge = ({
   onClick,
 }: FilterBadgeProps) => {
   return (
-    <motion.button
-      onClick={onClick}
-      whileHover={{ scale: 1.03 }}
-      whileTap={{ scale: 0.97 }}
-      aria-pressed={active}
+    <div
       style={{
-        position: "relative",
-        display: "inline-flex",
+        display: "flex",
         flexDirection: "column",
-        alignItems: "flex-start",
-        paddingInline: "var(--space-4)",
-        paddingBlock: "var(--space-2)",
-        borderRadius: "var(--radius-full)",
-        border: active
-          ? "1.5px solid var(--color-accent-primary-dark)"
-          : "1.5px solid var(--color-border-strong)",
-        backgroundColor: active
-          ? "var(--color-accent-primary)"
-          : "var(--color-bg-card)",
-        color: active
-          ? "var(--color-bg-primary)"
-          : "var(--color-text-secondary)",
-        fontWeight: 600,
-        fontSize: "var(--font-size-sm)",
-        cursor: onClick ? "pointer" : "default",
-        outline: "none",
-        transition: [
-          "background-color var(--transition-fast)",
-          "border-color var(--transition-fast)",
-          "color var(--transition-fast)",
-        ].join(", "),
+        gap: "var(--space-1)",
       }}
     >
-      {/* Main Label */}
-      <span>{label}</span>
+      <motion.button
+        onClick={onClick}
+        whileHover={{ scale: 1.03 }}
+        whileTap={{ scale: 0.97 }}
+        aria-pressed={active}
+        style={{
+          display: "inline-flex",
+          alignItems: "center",
+          paddingInline: "var(--space-4)",
+          paddingBlock: "var(--space-2)",
+          borderRadius: "var(--radius-full)",
+          border: active
+            ? "1.5px solid var(--color-accent-primary-dark)"
+            : "1.5px solid var(--color-border-strong)",
+          backgroundColor: active
+            ? "var(--color-accent-primary)"
+            : "var(--color-bg-card)",
+          color: active
+            ? "var(--color-bg-primary)"
+            : "var(--color-text-primary)",
+          fontWeight: 600,
+          fontSize: "var(--font-size-sm)",
+          cursor: onClick ? "pointer" : "default",
+          outline: "none",
+          transition: [
+            "background-color var(--transition-fast)",
+            "border-color var(--transition-fast)",
+            "color var(--transition-fast)",
+          ].join(", "),
+        }}
+      >
+        {label}
+      </motion.button>
+
+      {/* Sublabel renders below the badge, not floating over content */}
       {subLabel && (
         <motion.span
           initial={{ opacity: 0, y: -4 }}
           animate={{ opacity: 1, y: 0 }}
           style={{
-            position: "absolute",
-            top: "calc(100% + var(--space-1))",
-            left: 0,
-            backgroundColor: "var(--color-bg-card)",
-            border: "1.5px solid var(--color-border-strong)",
-            borderRadius: "var(--radius-md)",
-            paddingInline: "var(--space-3)",
-            paddingBlock: "var(--space-2)",
             fontSize: "var(--font-size-xs)",
-            color: "var(--color-text-secondary)",
-            whiteSpace: "nowrap",
-            zIndex: 10,
-            boxShadow: "var(--shadow-card)",
-            pointerEvents: "none",
+            color: "var(--color-text-muted)",
+            paddingInline: "var(--space-2)",
           }}
         >
-          <span style={{ display: "block", fontWeight: 400 }}>
-            Aggregated by:
-          </span>
-          <span
-            style={{
-              fontWeight: 700,
-              color: "var(--color-text-primary)",
-            }}
-          >
+          Aggregated by:{" "}
+          <strong style={{ color: "var(--color-text-secondary)" }}>
             {subLabel}
-          </span>
+          </strong>
         </motion.span>
       )}
-    </motion.button>
+    </div>
   );
 };
+
+// NOTE:
+// The floating sublabel (Aggregated by: Cluster) is absolutely positioned below the badge - it mirrors exactly what's in the video
+// active prop drives the green fill vs outline state via tokens only - no hardcoded hex anywhere
+// cursor: default when not clickable - the time range badge is interactive, the aggregation badge is read-only

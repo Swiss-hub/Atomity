@@ -104,3 +104,7 @@ export const useCloudData = (timeRange: TimeRange) => {
         queryFn: () => fetchCloudData(timeRange),
     });
 };
+
+// NOTE:
+// queryKey: ["cloud-data", timeRange] — TanStack Query caches per time range. Switch from 30d → 7d → 30d and the second 30d hit is instant, no network request
+// Loading + error states come free from useQuery (isLoading, isError, error) — we'll use them in the dashboard component

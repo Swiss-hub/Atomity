@@ -86,3 +86,7 @@ export const BarChart = ({ items, selectedId, onBarClick }: BarChartProps) => {
     </div>
   );
 };
+
+// NOTE:
+// AnimatePresence mode="wait" — when you drill down, the old bars fade out completely before the new ones animate in. Clean level transition
+// clamp(8px, 3vw, 32px) — gap between bars is fluid, works on all screen sizes

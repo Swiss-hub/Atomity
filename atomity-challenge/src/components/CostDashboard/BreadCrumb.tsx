@@ -102,3 +102,9 @@ export const Breadcrumb = ({ steps, onNavigate }: BreadcrumbProps) => {
     </nav>
   );
 };
+
+// NOTE:
+// AnimatePresence mode="popLayout" - each new breadcrumb step slides in from the left as you drill down, and slides back out when you navigate up. popLayout keeps the surrounding elements from jumping
+// aria-current="page" on the last step - tells screen readers which level you're currently on
+// The last step is always green (active), previous steps are muted and clickable - clear visual hierarchy
+// isClickable guard - the current level pill is not a button functionally, prevents accidental re-clicks

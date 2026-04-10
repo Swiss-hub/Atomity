@@ -37,3 +37,7 @@ export const useInView = <T extends HTMLElement = HTMLDivElement>({
 
     return { ref, inView };
 }
+
+// NOTE:
+// The key detail here is once: true as the default — bars animate in on scroll, and stay animated. They don't reset every time you scroll up and back down, which would feel janky and cheap.
+// The rootMargin: "0px 0px -60px 0px" means the animation fires slightly before the element fully enters the viewport - so it feels responsive rather than late

@@ -134,3 +134,10 @@ export const CostTableRow = ({
     </motion.tr>
   );
 };
+
+// NOTE:
+// Each row has its own useInView - rows animate in independently as you scroll, not all at once
+// color-mix(in srgb, ...) - the highlighted row background is a 8% tint of the accent green mixed with transparent. Pure modern CSS, no hardcoded rgba value
+// fontVariantNumeric: "tabular-nums" - numbers align perfectly in columns even as they count up, no layout shift
+// Each AnimatedCell gets a staggered delay - CPU counts up first, then RAM, Storage... all the way to Total
+// x: -16 entrance - rows slide in from the left, feels like data loading into place

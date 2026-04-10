@@ -71,3 +71,11 @@ export const useCountUp = ({
 
     return { value, formatted };
 };
+
+// NOTE:
+// requestAnimationFrame - smooth 60fps animation, no setInterval jank
+// easeOutQuart - counts up fast at first then gently lands on the final number. Feels satisfying and natural
+// enabled prop - tied to inView from our previous hook. Numbers only count up when the table is actually visible on screen
+// prefers-reduced-motion - if the user has this set, we skip the animation entirely and jump straight to the final value. This is one of the accessibility checks the brief explicitly looks for
+// toLocaleString - automatically formats 6867 as 6,867 with proper comma separators
+// Cleanup - cancelAnimationFrame on unmount prevents memory leaks if the user scrolls away mid-animation

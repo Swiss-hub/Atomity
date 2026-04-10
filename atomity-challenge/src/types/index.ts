@@ -47,3 +47,9 @@ export interface TimeFilterOption {
     label: string;
     value: TimeRange;
 }
+// NOTE:
+// ResourceCosts is a flat object — easy to map over columns in the table
+// CostNode is generic — a cluster, namespace, and pod all have the same shape, just different names. This means your BarChart and CostTable components are reusable across all three levels without any changes
+// CloudDataResponse uses Record<string, CostNode[]> so lookups are O(1) — given a cluster id, you instantly get its namespaces
+// BreadcrumbStep tracks the full trail so we can navigate back to any level
+// DrillLevel as a union type means TypeScript will warn you if you ever pass an invalid level string anywhere

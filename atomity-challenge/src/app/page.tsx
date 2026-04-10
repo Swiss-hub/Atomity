@@ -288,7 +288,7 @@ export default function Home() {
           }}
         >
           Drill into every cluster, namespace, and pod. Understand your spend at
-          any level of granularity — in real time.
+          any level of granularity - in real time.
         </motion.p>
       </section>
 

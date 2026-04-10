@@ -36,3 +36,7 @@ export default function RootLayout({
     </html>
   );
 }
+
+// NOTE:
+// staleTime: 5mins — no redundant fetches during a session
+// Deterministic seeding — data feels real and changes meaningfully between time ranges, but never randomly flickers on re-render

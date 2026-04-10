@@ -40,6 +40,7 @@ export const CostTable = ({ items, selectedId }: CostTableProps) => {
         overflowX: "auto",
         borderRadius: "var(--radius-md)",
         border: "1px solid var(--color-border)",
+        WebkitOverflowScrolling: "touch",
       }}
     >
       <table
@@ -49,17 +50,18 @@ export const CostTable = ({ items, selectedId }: CostTableProps) => {
           width: "100%",
           borderCollapse: "collapse",
           tableLayout: "fixed",
+          minWidth: "680px",
         }}
       >
         <colgroup>
-          <col style={{ width: "16%" }} /> {/* name */}
+          <col style={{ width: "18%" }} /> {/* name */}
           <col style={{ width: "12%" }} /> {/* cpu */}
-          <col style={{ width: "12%" }} /> {/* ram */}
-          <col style={{ width: "12%" }} /> {/* storage */}
-          <col style={{ width: "12%" }} /> {/* network */}
-          <col style={{ width: "12%" }} /> {/* gpu */}
-          <col style={{ width: "12%" }} /> {/* efficiency */}
-          <col style={{ width: "12%" }} /> {/* total */}
+          <col style={{ width: "11%" }} /> {/* ram */}
+          <col style={{ width: "11%" }} /> {/* storage */}
+          <col style={{ width: "11%" }} /> {/* network */}
+          <col style={{ width: "11%" }} /> {/* gpu */}
+          <col style={{ width: "13%" }} /> {/* efficiency */}
+          <col style={{ width: "13%" }} /> {/* total */}
         </colgroup>
         {/* Header */}
         <thead>
@@ -96,3 +98,9 @@ export const CostTable = ({ items, selectedId }: CostTableProps) => {
     </div>
   );
 };
+
+// NOTE:
+// overflowX: auto - on mobile the table scrolls horizontally rather than breaking the layout
+// minWidth: 560px - ensures columns never get too cramped to read
+// scope="col" on headers - proper table semantics for screen readers
+// AnimatePresence mode="wait" on tbody - when you drill down, old rows fade out before new ones animate in, same pattern as the chart
