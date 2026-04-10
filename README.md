@@ -73,11 +73,11 @@ Loading state shows an animated skeleton (pulsing placeholder bars and rows). Er
 
 | Library        | Version | Why                                                            |
 | -------------- | ------- | -------------------------------------------------------------- |
-| Next.js        | 15      | App Router, file-based routing, built-in optimizations         |
+| ![Next.js](https://img.shields.io/badge/next%20js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)       | 15      | App Router, file-based routing, built-in optimizations         |
 | ![React](https://img.shields.io/badge/-React-61DAFB?style=flat-square&logo=react&logoColor=black)          | 19      | UI framework                                                   |
-| TypeScript     | 5       | Type safety across all components and hooks                    |
-| Framer Motion  | 11      | Animation library — clean API, great `AnimatePresence` support |
-| TanStack Query | 5       | Best-in-class async state management and caching               |
+| ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)     | 5       | Type safety across all components and hooks                    |
+| ![Framer Motion](https://img.shields.io/badge/Framer-black?style=for-the-badge&logo=framer&logoColor=blue)  | 11      | Animation library — clean API, great `AnimatePresence` support |
+| 	![TanStack Query](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) | 5       | Best-in-class async state management and caching               |
 | clsx           | 2       | Conditional class merging utility                              |
 
 No pre-built UI component libraries were used. Every component — cards, badges, bars, breadcrumbs, table rows - was built from scratch.
