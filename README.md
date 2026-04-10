@@ -2,7 +2,7 @@
 
 A scroll-triggered, animated cloud cost drill-down dashboard built for the Atomity frontend engineering challenge.
 
-**Live Demo:** [vercel-url-will-be-here-shortly]
+**Live Demo:** [(https://atomity-xi.vercel.app/)]
 
 ---
 
