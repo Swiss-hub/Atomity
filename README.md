@@ -59,11 +59,11 @@ Data is fetched from the **DummyJSON** public API (`/users`) and transformed int
 
 **TanStack Query** (React Query v5) handles all async state:
 
-- `staleTime: 5 minutes` — no refetch while data is fresh
-- `gcTime: 10 minutes` — cached data stays in memory after the component unmounts
-- `queryKey: ["cloud-data", timeRange]` — each time range (7d / 30d / 90d) is cached independently. Switching from 30d → 7d → 30d serves the second 30d hit instantly from cache with no network request
+- `staleTime: 5 minutes` - no refetch while data is fresh
+- `gcTime: 10 minutes` - cached data stays in memory after the component unmounts
+- `queryKey: ["cloud-data", timeRange]` - each time range (7d / 30d / 90d) is cached independently. Switching from 30d → 7d → 30d serves the second 30d hit instantly from cache with no network request
 - `retry: 2` — failed requests retry twice before showing the error state
-- `refetchOnWindowFocus: false` — no surprise refetches when the user switches tabs
+- `refetchOnWindowFocus: false` - no surprise refetches when the user switches tabs
 
 Loading state shows an animated skeleton (pulsing placeholder bars and rows). Error state shows a clear message with `role="alert"` so screen readers announce it.
 
@@ -80,7 +80,7 @@ Loading state shows an animated skeleton (pulsing placeholder bars and rows). Er
 | TanStack Query | 5       | Best-in-class async state management and caching               |
 | clsx           | 2       | Conditional class merging utility                              |
 
-No pre-built UI component libraries were used. Every component — cards, badges, bars, breadcrumbs, table rows — was built from scratch.
+No pre-built UI component libraries were used. Every component — cards, badges, bars, breadcrumbs, table rows - was built from scratch.
 
 ---
 
@@ -114,21 +114,21 @@ globals.css # Reset, body styles, reduced motion
 
 ## Tradeoffs & Decisions
 
-**DummyJSON as data source** — The API doesn't return cloud cost data, so I transform user records into cost figures using deterministic seeding. This satisfies the brief's requirement for real API integration and async state handling while producing data that feels realistic. The tradeoff is that the numbers aren't semantically meaningful — but neither would any mock API's data be.
+**DummyJSON as data source** — The API doesn't return cloud cost data, so I transform user records into cost figures using deterministic seeding. This satisfies the brief's requirement for real API integration and async state handling while producing data that feels realistic. The tradeoff is that the numbers aren't semantically meaningful - but neither would any mock API's data be.
 
-**Pixel heights for bars instead of percentages** — CSS percentage heights on flex children are unreliable without an explicit parent height. Converting to `heightPercent * 2` pixel values gives precise, predictable bar scaling. The tradeoff is that the chart has a fixed max height of 220px — acceptable for this use case.
+**Pixel heights for bars instead of percentages** - CSS percentage heights on flex children are unreliable without an explicit parent height. Converting to `heightPercent * 2` pixel values gives precise, predictable bar scaling. The tradeoff is that the chart has a fixed max height of 220px - acceptable for this use case.
 
-**Drill-down state in `CostDashboard`** — All drill state lives in the parent component rather than a context or store. This keeps the data flow simple and explicit for a single-section feature. If this grew into a full application, moving state to Zustand or React context would make sense.
+**Drill-down state in `CostDashboard`** - All drill state lives in the parent component rather than a context or store. This keeps the data flow simple and explicit for a single-section feature. If this grew into a full application, moving state to Zustand or React context would make sense.
 
-**No unit tests** — Given the 6–8 hour time constraint, I prioritised animation quality, accessibility, and code architecture over test coverage. With more time I'd add Vitest unit tests for the hooks and React Testing Library tests for the drill-down interaction.
+**No unit tests** - Given the 6–8 hour time constraint, I prioritised animation quality, accessibility, and code architecture over test coverage. With more time I'd add Vitest unit tests for the hooks and React Testing Library tests for the drill-down interaction.
 
 ---
 
 ## What I'd Improve With More Time
 
-- **Real WebSocket data** — live-updating cost numbers with smooth transitions as values change
-- **Sorting** — click a column header to sort the table by that metric
-- **Export** — download the current view as a CSV
-- **Animations between drill levels** — a more cinematic zoom/morph transition rather than a fade when drilling down
-- **Unit + integration tests** — full coverage of hooks and drill-down state machine
-- **URL state** — encode the current drill level and selected node in the URL so the view is shareable and survives a page refresh
+- **Real WebSocket data** - live-updating cost numbers with smooth transitions as values change
+- **Sorting** - click a column header to sort the table by that metric
+- **Export** - download the current view as a CSV
+- **Animations between drill levels** - a more cinematic zoom/morph transition rather than a fade when drilling down
+- **Unit + integration tests** - full coverage of hooks and drill-down state machine
+- **URL state** - encode the current drill level and selected node in the URL so the view is shareable and survives a page refresh
