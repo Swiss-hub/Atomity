@@ -77,7 +77,7 @@ Loading state shows an animated skeleton (pulsing placeholder bars and rows). Er
 | ![React](https://img.shields.io/badge/-React-61DAFB?style=flat-square&logo=react&logoColor=black)          | 19      | UI framework                                                   |
 | ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)     | 5       | Type safety across all components and hooks                    |
 | ![Framer Motion](https://img.shields.io/badge/Framer-black?style=for-the-badge&logo=framer&logoColor=blue)  | 11      | Animation library — clean API, great `AnimatePresence` support |
-| 	![TanStack Query] | 5       | Best-in-class async state management and caching               |
+| TanStack Query | 5       | Best-in-class async state management and caching               |
 | clsx           | 2       | Conditional class merging utility                              |
 
 No pre-built UI component libraries were used. Every component — cards, badges, bars, breadcrumbs, table rows - was built from scratch.
