@@ -74,7 +74,7 @@ Loading state shows an animated skeleton (pulsing placeholder bars and rows). Er
 | Library        | Version | Why                                                            |
 | -------------- | ------- | -------------------------------------------------------------- |
 | Next.js        | 15      | App Router, file-based routing, built-in optimizations         |
-| React          | 19      | UI framework                                                   |
+| ![React](https://img.shields.io/badge/-React-61DAFB?style=flat-square&logo=react&logoColor=black)          | 19      | UI framework                                                   |
 | TypeScript     | 5       | Type safety across all components and hooks                    |
 | Framer Motion  | 11      | Animation library — clean API, great `AnimatePresence` support |
 | TanStack Query | 5       | Best-in-class async state management and caching               |
