@@ -3,7 +3,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { CostTableRow } from "./CostTableRow";
 import { CostNode } from "@/types";
-import { div, th } from "framer-motion/client";
 
 interface CostTableProps {
   items: CostNode[];
@@ -11,15 +10,27 @@ interface CostTableProps {
 }
 
 const COLUMNS = [
-  { key: "name", label: "", align: "left" },
-  { key: "cpu", label: "CPU", align: "right" },
-  { key: "ram", label: "RAM", align: "right" },
-  { key: "storage", label: "Storage", align: "right" },
-  { key: "network", label: "Network", align: "right" },
-  { key: "gpu", label: "GPU", align: "right" },
-  { key: "efficiency", label: "Efficiency", align: "right" },
-  { key: "total", label: "Total", align: "right" },
+  { key: "name", label: "", align: "left", width: "120px" },
+  { key: "cpu", label: "CPU", align: "right", width: "80px" },
+  { key: "ram", label: "RAM", align: "right", width: "80px" },
+  { key: "storage", label: "Storage", align: "right", width: "80px" },
+  { key: "network", label: "Network", align: "right", width: "80px" },
+  { key: "gpu", label: "GPU", align: "right", width: "80px" },
+  { key: "efficiency", label: "Efficiency", align: "right", width: "90px" },
+  { key: "total", label: "Total", align: "right", width: "90px" },
 ] as const;
+
+const TH_STYLE: React.CSSProperties = {
+  paddingInline: "var(--space-4)",
+  paddingBlock: "var(--space-3)",
+  fontSize: "var(--font-size-xs)",
+  fontWeight: 600,
+  color: "var(--color-text-muted)",
+  whiteSpace: "nowrap",
+  borderBottom: "1px solid var(--color-border)",
+  letterSpacing: "0.04em",
+  textTransform: "uppercase",
+};
 
 export const CostTable = ({ items, selectedId }: CostTableProps) => {
   return (
@@ -34,8 +45,22 @@ export const CostTable = ({ items, selectedId }: CostTableProps) => {
       <table
         role="table"
         aria-label="Cloud cost breakdown table"
-        style={{ width: "100%", borderCollapse: "collapse", minWidth: "560px" }}
+        style={{
+          width: "100%",
+          borderCollapse: "collapse",
+          tableLayout: "fixed",
+        }}
       >
+        <colgroup>
+          <col style={{ width: "16%" }} /> {/* name */}
+          <col style={{ width: "12%" }} /> {/* cpu */}
+          <col style={{ width: "12%" }} /> {/* ram */}
+          <col style={{ width: "12%" }} /> {/* storage */}
+          <col style={{ width: "12%" }} /> {/* network */}
+          <col style={{ width: "12%" }} /> {/* gpu */}
+          <col style={{ width: "12%" }} /> {/* efficiency */}
+          <col style={{ width: "12%" }} /> {/* total */}
+        </colgroup>
         {/* Header */}
         <thead>
           <tr>
@@ -44,16 +69,8 @@ export const CostTable = ({ items, selectedId }: CostTableProps) => {
                 key={col.key}
                 scope="col"
                 style={{
-                  paddingInline: "var(--space-3)",
-                  paddingBlock: "var(--space-3)",
-                  fontSize: "var(--font-size-xs)",
-                  fontWeight: 600,
-                  color: "var(--color-text-muted)",
+                  ...TH_STYLE,
                   textAlign: col.align as "left" | "right",
-                  whiteSpace: "nowrap",
-                  borderBottom: "1px solid var(--color-border)",
-                  letterSpacing: "0.04em",
-                  textTransform: "uppercase",
                 }}
               >
                 {col.label}
@@ -61,27 +78,20 @@ export const CostTable = ({ items, selectedId }: CostTableProps) => {
             ))}
           </tr>
         </thead>
+
         {/* Body */}
-        <thead>
+        <tbody>
           <AnimatePresence mode="wait">
-            <motion.tr
-              key={items.map((i) => i.id).join("-")}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
-            >
-              {items.map((node, index) => (
-                <CostTableRow
-                  key={node.id}
-                  node={node}
-                  index={index}
-                  isHighlighted={selectedId === node.id}
-                />
-              ))}
-            </motion.tr>
+            {items.map((node, index) => (
+              <CostTableRow
+                key={node.id}
+                node={node}
+                index={index}
+                isHighlighted={selectedId === node.id}
+              />
+            ))}
           </AnimatePresence>
-        </thead>
+        </tbody>
       </table>
     </div>
   );

@@ -1,9 +1,9 @@
-"use Client";
+"use client";
 
 import { motion } from "framer-motion";
-import { CostNode } from "@/types";
-import { useInView } from "@/hooks/useInView";
 import { useCountUp } from "@/hooks/useCountUp";
+import { useInView } from "@/hooks/useInView";
+import type { CostNode } from "@/types";
 
 interface CostTableRowProps {
   node: CostNode;
@@ -11,7 +11,15 @@ interface CostTableRowProps {
   isHighlighted: boolean;
 }
 
-// Individually animated cell
+const CELL_STYLE: React.CSSProperties = {
+  paddingInline: "var(--space-4)",
+  paddingBlock: "var(--space-3)",
+  fontSize: "var(--font-size-sm)",
+  textAlign: "right",
+  whiteSpace: "nowrap",
+  fontVariantNumeric: "tabular-nums",
+};
+
 const AnimatedCell = ({
   value,
   prefix = "",
@@ -34,25 +42,19 @@ const AnimatedCell = ({
     prefix,
     suffix,
     enabled,
-    duration: 1000 + delay + 100,
+    duration: 1000 + delay * 100,
   });
 
   return (
     <td
       style={{
-        paddingInline: "var(--space-3)",
-        paddingBlock: "var(--space-3)",
-        fontSize: "var(--font-size-sm)",
+        ...CELL_STYLE,
         fontWeight: bold ? 700 : 400,
         color: muted
           ? "var(--color-text-muted)"
           : bold
             ? "var(--color-text-primary)"
             : "var(--color-text-secondary)",
-        textAlign: "right",
-        whiteSpace: "nowrap",
-        fontVariantNumeric: "tabular-nums",
-        transition: "color var(--transition-fast)",
       }}
     >
       {formatted}
@@ -60,7 +62,6 @@ const AnimatedCell = ({
   );
 };
 
-//The Entire Row
 export const CostTableRow = ({
   node,
   index,
@@ -74,31 +75,33 @@ export const CostTableRow = ({
       ref={ref}
       initial={{ opacity: 0, x: -16 }}
       animate={inView ? { opacity: 1, x: 0 } : {}}
-      transition={{ duration: 0.4, delay: index * 0.07, ease: "easeOut" }}
+      transition={{
+        duration: 0.4,
+        delay: index * 0.07,
+        ease: "easeOut",
+      }}
       style={{
         backgroundColor: isHighlighted
           ? "color-mix(in srgb, var(--color-accent-primary) 8%, transparent)"
           : "transparent",
-        borderRadius: "var(--radius-sm)",
         transition: "background-color var(--transition-fast)",
       }}
     >
-      {/* The Row Label */}
+      {/* Name cell — left aligned */}
       <td
         style={{
-          paddingInline: "var(--space-3)",
-          paddingBlock: "var(--space-3)",
-          fontSize: "var(--font-size-sm)",
+          ...CELL_STYLE,
+          textAlign: "left",
           fontWeight: isHighlighted ? 700 : 500,
           color: isHighlighted
             ? "var(--color-text-primary)"
-            : "var(--color-text-secondary",
+            : "var(--color-text-secondary)",
+          transition: "color var(--transition-fast)",
         }}
       >
         {node.name}
       </td>
 
-      {/* Cost Cells */}
       <AnimatedCell value={costs.cpu} prefix="$" enabled={inView} delay={0} />
       <AnimatedCell value={costs.ram} prefix="$" enabled={inView} delay={1} />
       <AnimatedCell

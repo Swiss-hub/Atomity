@@ -39,6 +39,7 @@ export const Bar = ({
         alignItems: "center",
         justifyContent: "flex-end",
         flex: 1,
+        height: "100%",
         gap: "var(--space-2)",
         minWidth: 0,
       }}
@@ -84,7 +85,7 @@ export const Bar = ({
           transformOrigin: "bottom",
           width: "100%",
           maxWidth: "80px",
-          height: `${Math.max(heightPercent, 8)}%`, // this ensures a minimum visible height for very small values
+          height: `${Math.max(heightPercent * 2, 12)}px`, // this ensures a minimum visible height for very small values
           minHeight: "12px",
           backgroundColor: barColor,
           borderRadius:
