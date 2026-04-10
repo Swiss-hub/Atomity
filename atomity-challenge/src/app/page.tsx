@@ -64,6 +64,33 @@ export default function Home() {
         transition: "background-color var(--transition-slow)",
       }}
     >
+      {/* ── Skip to content link (keyboard accessibility) ── */}
+      <a
+        href="#dashboard"
+        style={{
+          position: "absolute",
+          top: "-100px",
+          left: "var(--space-4)",
+          zIndex: 100,
+          paddingInline: "var(--space-4)",
+          paddingBlock: "var(--space-2)",
+          backgroundColor: "var(--color-accent-primary)",
+          color: "var(--color-bg-primary)",
+          borderRadius: "var(--radius-md)",
+          fontSize: "var(--font-size-sm)",
+          fontWeight: 600,
+          textDecoration: "none",
+          transition: "top var(--transition-fast)",
+        }}
+        onFocus={(e) => {
+          (e.target as HTMLAnchorElement).style.top = "var(--space-4)";
+        }}
+        onBlur={(e) => {
+          (e.target as HTMLAnchorElement).style.top = "-100px";
+        }}
+      >
+        Skip to dashboard
+      </a>
       {/*  Navbar  */}
       <nav
         aria-label="Site navigation"
@@ -267,7 +294,9 @@ export default function Home() {
 
       {/*  Dashboard section  */}
       <section
+        id="dashboard"
         aria-label="Cloud cost explorer"
+        className="dashboard-container"
         style={{
           paddingInline: "clamp(16px, 5vw, 48px)",
           paddingBottom: "clamp(48px, 8vw, 96px)",

@@ -24,9 +24,8 @@ export const useCountUp = ({
     const startTimeRef = useRef<number  |  null>(null);
 
     useEffect(() => {
-        const prefersReduced = window.matchMedia(
-            "(prefers-reduced-motioon: reduce)"
-        ).matches;
+        const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+        const prefersReduced = mediaQuery.matches;
 
         if (!enabled) return;
 
