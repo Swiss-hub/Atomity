@@ -62,9 +62,9 @@ export const CostTable = ({ items, selectedId }: CostTableProps) => {
           </tr>
         </thead>
         {/* Body */}
-        <tbody>
+        <thead>
           <AnimatePresence mode="wait">
-            <motion.tbody
+            <motion.tr
               key={items.map((i) => i.id).join("-")}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -79,9 +79,9 @@ export const CostTable = ({ items, selectedId }: CostTableProps) => {
                   isHighlighted={selectedId === node.id}
                 />
               ))}
-            </motion.tbody>
+            </motion.tr>
           </AnimatePresence>
-        </tbody>
+        </thead>
       </table>
     </div>
   );
