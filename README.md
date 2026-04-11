@@ -80,7 +80,7 @@ Loading state shows an animated skeleton (pulsing placeholder bars and rows). Er
 | TanStack Query | 5       | Best-in-class async state management and caching               |
 | clsx           | 2       | Conditional class merging utility                              |
 
-No pre-built UI component libraries were used. Every component — cards, badges, bars, breadcrumbs, table rows - was built from scratch.
+No pre-built UI component libraries were used. Every component: cards, badges, bars, breadcrumbs, table rows - was built from scratch.
 
 ---
 
