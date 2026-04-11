@@ -55,7 +55,7 @@ Modern CSS features used:
 
 ## Data Fetching & Caching
 
-Data is fetched from the **DummyJSON** public API (`/users`) and transformed into a realistic cloud cost structure with deterministic seeding — the same API values always produce the same cost numbers, so there's no random flickering between renders.
+Data is fetched from the **DummyJSON** public API (`/users`) and transformed into a realistic cloud cost structure with deterministic seeding - the same API values always produce the same cost numbers, so there's no random flickering between renders.
 
 **TanStack Query** (React Query v5) handles all async state:
 
