@@ -54,7 +54,8 @@ export const CostTable = ({ items, selectedId }: CostTableProps) => {
         }}
       >
         <colgroup>
-          <col style={{ width: "18%" }} /> {/* name */}
+          {/* prettier-ignore */}
+          <col style={{ width: "18%" }}/> {/* name */}
           <col style={{ width: "12%" }} /> {/* cpu */}
           <col style={{ width: "11%" }} /> {/* ram */}
           <col style={{ width: "11%" }} /> {/* storage */}
@@ -83,7 +84,7 @@ export const CostTable = ({ items, selectedId }: CostTableProps) => {
 
         {/* Body */}
         <tbody>
-          <AnimatePresence mode="wait">
+          <AnimatePresence>
             {items.map((node, index) => (
               <CostTableRow
                 key={node.id}

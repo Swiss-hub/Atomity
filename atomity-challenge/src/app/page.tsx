@@ -62,6 +62,7 @@ export default function Home() {
         minHeight: "100vh",
         backgroundColor: "var(--color-bg-primary)",
         transition: "background-color var(--transition-slow)",
+        overflowX: "hidden",
       }}
     >
       {/* ── Skip to content link (keyboard accessibility) ── */}

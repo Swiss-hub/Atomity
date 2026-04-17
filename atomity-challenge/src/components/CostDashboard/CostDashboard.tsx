@@ -191,12 +191,14 @@ export const CostDashboard = () => {
         display: "flex",
         flexDirection: "column",
         gap: "var(--space-6)",
+        overflow: "hidden",
       }}
     >
       {/* Header */}
       <header
         style={{
           display: "flex",
+          flexDirection: "column",
           alignItems: "flex-start",
           justifyContent: "space-between",
           flexWrap: "wrap",
@@ -230,7 +232,7 @@ export const CostDashboard = () => {
         />
       </header>
 
-      {/* ── Breadcrumb ────────────────────────────────────────────────── */}
+      {/*  Breadcrumb  */}
       <AnimatePresence>
         {breadcrumbs.length > 1 && (
           <motion.div
@@ -247,7 +249,7 @@ export const CostDashboard = () => {
         )}
       </AnimatePresence>
 
-      {/* ── Content ───────────────────────────────────────────────────── */}
+      {/*  Content */}
       {isLoading ? (
         <DashboardSkeleton />
       ) : isError ? (
