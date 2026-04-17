@@ -1,8 +1,8 @@
-# Atomity Frontend Challenge — Cloud Cost Explorer
+# Atomity Frontend Challenge - Cloud Cost Explorer
 
 A scroll-triggered, animated cloud cost drill-down dashboard built for the Atomity frontend engineering challenge.
 
-**Live Demo:** [vercel-url-will-be-here-shortly]
+**Live Demo:** [(https://atomity-xi.vercel.app/)]
 
 ---
 
@@ -33,12 +33,12 @@ Key animation decisions:
 
 Design tokens are defined once in two places that work together:
 
-- **`src/tokens/global.css`** — CSS custom properties on `:root` and `[data-theme="dark"]`
-- **`src/tokens/index.ts`** — TypeScript object referencing those CSS variables as strings
+- **`src/tokens/global.css`** - CSS custom properties on `:root` and `[data-theme="dark"]`
+- **`src/tokens/index.ts`** - TypeScript object referencing those CSS variables as strings
 
 Components never use raw hex values. Every color, spacing, radius, shadow, and transition references a token. This means:
 
-- Dark mode works by swapping the `data-theme` attribute on `<html>` — no component logic needed
+- Dark mode works by swapping the `data-theme` attribute on `<html>` - no component logic needed
 - Updating a color means changing it in one place and it propagates everywhere
 - `color-mix()` is used for derived values (e.g. highlighted row tint, navbar backdrop) so we never hardcode semi-transparent variants
 
@@ -55,7 +55,7 @@ Modern CSS features used:
 
 ## Data Fetching & Caching
 
-Data is fetched from the **DummyJSON** public API (`/users`) and transformed into a realistic cloud cost structure with deterministic seeding — the same API values always produce the same cost numbers, so there's no random flickering between renders.
+Data is fetched from the **DummyJSON** public API (`/users`) and transformed into a realistic cloud cost structure with deterministic seeding - the same API values always produce the same cost numbers, so there's no random flickering between renders.
 
 **TanStack Query** (React Query v5) handles all async state:
 
@@ -76,11 +76,11 @@ Loading state shows an animated skeleton (pulsing placeholder bars and rows). Er
 | ![Next.js](https://img.shields.io/badge/next%20js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)       | 15      | App Router, file-based routing, built-in optimizations         |
 | ![React](https://img.shields.io/badge/-React-61DAFB?style=flat-square&logo=react&logoColor=black)          | 19      | UI framework                                                   |
 | ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)     | 5       | Type safety across all components and hooks                    |
-| ![Framer Motion](https://img.shields.io/badge/Framer-black?style=for-the-badge&logo=framer&logoColor=blue)  | 11      | Animation library — clean API, great `AnimatePresence` support |
+| ![Framer Motion](https://img.shields.io/badge/Framer-black?style=for-the-badge&logo=framer&logoColor=blue)  | 11      | Animation library - clean API, great `AnimatePresence` support |
 | TanStack Query | 5       | Best-in-class async state management and caching               |
 | clsx           | 2       | Conditional class merging utility                              |
 
-No pre-built UI component libraries were used. Every component — cards, badges, bars, breadcrumbs, table rows - was built from scratch.
+No pre-built UI component libraries were used. Every component: cards, badges, bars, breadcrumbs, table rows - was built from scratch.
 
 ---
 
@@ -114,7 +114,7 @@ globals.css # Reset, body styles, reduced motion
 
 ## Tradeoffs & Decisions
 
-**DummyJSON as data source** — The API doesn't return cloud cost data, so I transform user records into cost figures using deterministic seeding. This satisfies the brief's requirement for real API integration and async state handling while producing data that feels realistic. The tradeoff is that the numbers aren't semantically meaningful - but neither would any mock API's data be.
+**DummyJSON as data source** - The API doesn't return cloud cost data, so I transform user records into cost figures using deterministic seeding. This satisfies the brief's requirement for real API integration and async state handling while producing data that feels realistic. The tradeoff is that the numbers aren't semantically meaningful - but neither would any mock API's data be.
 
 **Pixel heights for bars instead of percentages** - CSS percentage heights on flex children are unreliable without an explicit parent height. Converting to `heightPercent * 2` pixel values gives precise, predictable bar scaling. The tradeoff is that the chart has a fixed max height of 220px - acceptable for this use case.
 
@@ -124,7 +124,7 @@ globals.css # Reset, body styles, reduced motion
 
 ---
 
-## What I'd Improve With More Time
+## What I will love to Improve With More Time
 
 - **Real WebSocket data** - live-updating cost numbers with smooth transitions as values change
 - **Sorting** - click a column header to sort the table by that metric
