@@ -1,4 +1,4 @@
-# Atomity Frontend Challenge - Cloud Cost Explorer
+# Atomity  - Cloud Cost Explorer
 
 A scroll-triggered, animated cloud cost drill-down dashboard built for the Atomity frontend engineering challenge.
 
